@@ -3,6 +3,8 @@ before_action :set_blog_post, only: %i[show edit update destroy]
 before_action :authenticate_user!, except: %i[index show]
   def index
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
+
+    @pagy, @blog_posts = pagy(@blog_posts)
   end
 
   def show
