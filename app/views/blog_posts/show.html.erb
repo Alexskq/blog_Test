@@ -1,3 +1,6 @@
+<%= image_tag @blog_post.cover_image, alt: "text" if @blog_post.cover_image.attached? %>
+
+
 <h1><%= @blog_post.title %></h1>
 <p><%= @blog_post.content %></p>
 
