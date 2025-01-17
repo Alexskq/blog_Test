@@ -28,9 +28,9 @@
     <p class="alert"><%= alert %></p>
 
     <% if user_signed_in? %>
-      <%= link_to " new post", new_blog_post_path  %>
+      <%= link_to " new post", new_blog_post_path, class:"bg-cyan-500 p-2 rounded"  %>
       <%#= link_to "Profile", edit_user_session_path %>
-      <%= button_to "logout", destroy_user_session_path, method: :delete %>
+      <%= button_to "logout", destroy_user_session_path, method: :delete, class: "bg-red-500 p-2 rounded my-2" %>
       <!--
       <%#%> else %>
       <%#= link_to "Sign up", new_user_registration_path %>
