@@ -4,7 +4,7 @@ class BlogPosts::CoverImagesController < ApplicationController
   before_action :set_blog_post
 
   def destroy
-    @blog_post.cover_image.purge_later
+    @blog_post.cover_image.purge
 
     respond_to do |format|
       format.html { redirect_to edit_blog_post_path(@blog_post) }
