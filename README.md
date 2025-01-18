@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App blog Test
 
-Things you may want to cover:
+Things I covered:
 
-* Ruby version
+* Hosted on Render
 
-* System dependencies
+* AWS S3 for storage file
 
-* Configuration
+* Tailwind
 
-* Database creation
+* Rails 8 
 
-* Database initialization
+* Active Storage / Action Text
 
-* How to run the test suite
+* Pagy -> pagination
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
