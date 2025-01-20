@@ -1,24 +1,38 @@
-<h1 class="text-red-500">My Blog</h1>
+<section class="container mx-auto p-4">
+  <%= link_to "Se connecter", new_user_session_path, class:"btn btn-primary "  %>
+  <h1 class="text-primary text-5xl font-extrabold text-center mb-6">Mes articles</h1>
 
-<% @blog_posts.each do |blog_post| %>
-  <div>
-    <h2><%= link_to blog_post.title, blog_post %></h2>
-    <%= image_tag blog_post.cover_image, alt: "text" if blog_post.cover_image.attached? %>
+  <div class="flex flex-wrap gap-4">
+    <% @blog_posts.each do |blog_post| %>
+      <div class="card bg-base-100 image-full w-96 shadow-xl opacity-85">
 
-    <% if blog_post.draft? %>
-      <div class="p-2 rounded bg-gray-400">Draft</div>
-    <% elsif blog_post.scheduled? %>
-      <div class="p-2 rounded bg-gray-400">
-        <p class='text-red-400'>Scheduled</p>
+        <figure>
+          <%= image_tag blog_post.cover_image,class:"w-[300px]", alt: "text" if blog_post.cover_image.attached? %>
+        </figure>
+        <div class="card-body">
+          <h2><%= link_to blog_post.title, blog_post, class:"card-title" %></h2>
+          <p><%= blog_post.content.to_plain_text.truncate(100) %></p>
+          <p class="mt-2 italic"><%= blog_post.published_at != nil ? blog_post.published_at.strftime("%d-%m-%y à %H:%m") : "Non défini" %></p>
+          <div class="card-actions  items-center justify-between">
+            <div>
+              <% if blog_post.draft? %>
+                <div class="badge badge-neutral">Brouillon</div>
+              <% elsif blog_post.scheduled? %>
+                <div class="badge badge-primary">
+                  <p class='text-red-400'>Programmé</p>
+                </div>
+              <% end %>
+            </div>
+            <%= link_to "Lire", blog_post, class:"btn btn-primary"  %>
+
+          </div>
+        </div>
       </div>
     <% end %>
-
-    <p><%= blog_post.content %></p>
-    <p><%= blog_post.published_at %></p>
-
   </div>
-<% end %>
 
-<div class="my-16">
-  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-</div>
+  <div class="my-16 mx-auto">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+
+</section>

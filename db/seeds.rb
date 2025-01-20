@@ -12,8 +12,12 @@
 user = User.where(email: "alex@mail.com").first_or_initialize
 user.update!(password: "password", password_confirmation: "password")
 
+BlogPost.destroy_all
 
-# 100.times do |i|
-#   blog_post = BlogPost.where(title: "Movie #{i}").first_or_initialize
-#    blog_post.update(content: "Description #{i}", published_at: Time.current)
-# end
+100.times do |i|
+  blog_post = BlogPost.where(title: "Article #{i}").first_or_initialize
+   blog_post.update(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. #{i}", published_at: Time.current)
+end
+
+
+

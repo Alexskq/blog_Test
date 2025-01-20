@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="pastel">
   <head>
     <title><%= content_for(:title) || "Blog Tuto" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -25,20 +25,25 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="prose mx-auto p-4 my-16">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class=" mx-auto p-4 my-16">
+    <div class="<%= 'hidden' unless notice.present? || alert.present? %>">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <% if user_signed_in? %>
-      <%= link_to " new post", new_blog_post_path, class:"bg-cyan-500 p-2 rounded"  %>
-      <%#= link_to "Profile", edit_user_session_path %>
-      <%= button_to "logout", destroy_user_session_path, method: :delete, class: "bg-red-500 p-2 rounded my-2" %>
-      <!--
+    </div>
+
+    <div class="flex justify-end items-center gap-2">
+      <% if user_signed_in? %>
+        <%= link_to "Ajouter un article", new_blog_post_path, class:"btn btn-active btn-primary"  %>
+        <%#= link_to "Profile", edit_user_session_path %>
+        <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-outline btn-secondary" %>
+        <!--
       <%#%> else %>
       <%#= link_to "Sign up", new_user_registration_path %>
       <%#%> link_to "Login", new_user_session_path %>
       -->
-    <% end %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
