@@ -1,5 +1,8 @@
-<h1>Edit form</h1>
+<div class="container mx-auto p-4 w-1/2">
+  <h1 class="text-5xl font-bold text-primary mb-3">Editer l'article</h1>
 
-<%= render partial: 'form', locals: {blog_post: @blog_post} %>
+  <%= render partial: 'form', locals: {blog_post: @blog_post} %>
 
-<%= button_to "delete", @blog_post, method: :delete, data: {turbo_confirm: " R u sur ? "} %>
+  <%= button_to "Supprimer", @blog_post, method: :delete, data: {turbo_confirm: " R u sur ? "}, class:"btn btn-outline btn-error mt-4" %>
+
+</div>

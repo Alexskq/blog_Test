@@ -1,8 +1,9 @@
-<%= image_tag @blog_post.cover_image, alt: "text" if @blog_post.cover_image.attached? %>
+<section class="container mx-auto p-4 flex flex-col items-center  mt-16">
+  <%= image_tag @blog_post.cover_image,class:"w-[300px] mb-6", alt: "text" if @blog_post.cover_image.attached? %>
+  <h1 class="text-5xl font-bold text-primary mb-6"><%= @blog_post.title %></h1>
+  <p><%= @blog_post.content %></p>
 
+  <%= link_to "Editer", edit_blog_post_path(@blog_post), class:"btn btn-outline mb-4"  %>
 
-<h1><%= @blog_post.title %></h1>
-<p><%= @blog_post.content %></p>
-
-
-<%= link_to "Homepage", root_path, class:"bg-cyan-400 p-2 rounded"  %>
+  <%= link_to "Retour", root_path, class:"btn btn-primary"  %>
+</section>
